@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {incrementCount} from './actions/index'
+import {incrementCount} from '../actions/index'
+import CountWidget from '../components/CountWidget';
 
-class App extends Component {
+export default class CountWidgetContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,15 +27,7 @@ class App extends Component {
       count: this.props.store.getState()
     })
   }
-
-  render() {
-    return (
-      <div>
-          <p>Count: {this.state.count}</p>
-          <button onClick={this.handleClick}>Increment Count</button>
-      </div>
-    );
+  render(){
+      return <CountWidget count={this.state.count} handleClick={this.handleClick} />
   }
 }
-
-export default App;
